@@ -6,10 +6,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        int computerPoints = 0;
+        int playerPoints = 0;
+
         while(true) {
             String[] rps = {"pedra", "papel", "tesoura"};
             String computerMove = rps[new Random().nextInt(rps.length)];
-
             String playerMove;
 
             while(true) {
@@ -29,24 +31,30 @@ public class Main {
             } else if(playerMove.equals("pedra")) {
                 if(computerMove.equals("papel")) {
                     System.out.println("Você perdeu!");
+                    computerPoints++;
                 } else if(computerMove.equals("tesoura")) {
                     System.out.println("Você ganhou!");
+                    playerPoints++;
                 }
             }
 
             else if(playerMove.equals("papel")) {
                 if(computerMove.equals("tesoura")) {
                     System.out.println("Você perdeu!");
+                    computerPoints++;
                 } else if(computerMove.equals("pedra")) {
                     System.out.println("Você ganhou!");
+                    playerPoints++;
                 }
             }
 
             else if(playerMove.equals("tesoura")) {
                 if(computerMove.equals("pedra")) {
                     System.out.println("Você perdeu!");
+                    computerPoints++;
                 } else if(computerMove.equals("papel")) {
                     System.out.println("Você ganhou!");
+                    playerPoints++;
                 }
             }
 
@@ -54,7 +62,15 @@ public class Main {
             String playAgain = scanner.nextLine();
 
             if(!playAgain.equals("s")) {
-                System.out.println("Te aguardo para jogar mais vezes!");
+                System.out.println("A pontuação final do jogo foi: \nJogador: " + playerPoints + "\nComputador: " + computerPoints);
+                if(playerPoints == computerPoints) {
+                    System.out.println("O jogo terminou empatado!");
+                } else if(playerPoints > computerPoints) {
+                    System.out.println("Você levou a melhor!");
+                } else {
+                    System.out.print("O computador levou a melhor!");
+                }
+                System.out.println("\nTe aguardo para jogar mais vezes!");
                 break;
             }
         }
